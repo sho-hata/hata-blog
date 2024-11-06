@@ -1,18 +1,28 @@
-import { css } from 'hono/css'
-import { createRoute } from 'honox/factory'
-import Counter from '../islands/counter'
+import type { Frontmatter } from "../types";
 
-const className = css`
-  font-family: sans-serif;
-`
-
-export default createRoute((c) => {
-  const name = c.req.query('name') ?? 'Hono'
-  return c.render(
-    <div class={className}>
-      <h1>Hello, {name}!</h1>
-      <Counter />
-    </div>,
-    { title: name }
-  )
-})
+export default function Top() {
+  const posts = import.meta.glob<{ frontmatter: Frontmatter }>(
+    "./articles/**/*.mdx",
+    {
+      eager: true,
+    },
+  );
+  return (
+    <div>
+      <h2>Articles</h2>
+      <ul>
+        {Object.entries(posts).map(([id, module]) => {
+          if (module.frontmatter) {
+            return (
+              <li>
+                <a href={`${id.replace(/\.mdx$/, "")}`}>
+                  {module.frontmatter.title}
+                </a>
+              </li>
+            );
+          }
+        })}
+      </ul>
+    </div>
+  );
+}
