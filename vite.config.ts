@@ -5,6 +5,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig } from "vite";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 
 export default defineConfig(() => {
   return {
@@ -13,7 +14,7 @@ export default defineConfig(() => {
       honox(),
       mdx({
         jsxImportSource: "hono/jsx",
-        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm,],
         rehypePlugins: [[rehypePrettyCode, {theme: "nord"}]],
       }),
     ],

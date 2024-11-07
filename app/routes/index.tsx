@@ -9,12 +9,14 @@ export default function Top() {
   );
   return (
     <div>
-      <h2>Articles</h2>
+      <h2>Shoki Hata's blog</h2>
+      <a href="https://github.com/sho-hata">ShokiHata</a>のブログです。雑多な技術ネタを投稿します。
       <ul>
         {Object.entries(posts).map(([id, module]) => {
           if (module.frontmatter) {
             return (
               <li>
+                <small>{module.frontmatter.date}</small><br />
                 <a href={`${id.replace(/\.mdx$/, "")}`}>
                   {module.frontmatter.title}
                 </a>
