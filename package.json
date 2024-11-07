@@ -10,7 +10,9 @@
   "private": true,
   "dependencies": {
     "hono": "^4.6.9",
-    "honox": "^0.1.26"
+    "honox": "^0.1.26",
+    "rehype-pretty-code": "^0.14.0",
+    "shiki": "^1.22.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240529.0",
