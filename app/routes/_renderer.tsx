@@ -1,11 +1,32 @@
 import { jsxRenderer } from "hono/jsx-renderer";
+import { blogName } from "../constraints";
+import styles from "../styles/style.css?url";
 
 export default jsxRenderer(({ children, frontmatter }) => {
-  const title = frontmatter?.title ?? "";
+  const pageTitle = frontmatter?.title
+    ? `${frontmatter.title} - ${blogName}`
+    : blogName;
   return (
-    <html lang="en">
-      <head>{<title>{title}</title>}</head>
-      <body>{children}</body>
+    <html lang="ja">
+      <head>
+        <meta http-equiv="content-language" content="ja" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {import.meta.env.PROD ? (
+          <link href="/styles/style.css" rel="stylesheet" />
+        ) : (
+          <link href={styles} rel="stylesheet" />
+        )}
+        {import.meta.env.PROD ? (
+          <link rel="icon" href="https://sho-hata.com/favicon.ico" />
+        ) : (
+          <link rel="icon" href="/favicon.ico" />
+        )}
+        {<title>{pageTitle}</title>}
+      </head>
+      <body class={"flex flex-col items-center mb-2 mx-2"}>
+        <main class={"max-w-[780px] w-screen px-6 mt-6"}>{children}</main>
+      </body>
     </html>
   );
 });
