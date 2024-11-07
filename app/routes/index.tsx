@@ -10,7 +10,7 @@ export default function Top() {
   return (
     <div>
       <h2>Shoki Hata's blog</h2>
-      <a href="https://github.com/sho-hata">ShokiHata</a>のブログです。雑多な技術ネタを投稿します。
+      <a href="https://github.com/sho-hata">ShokiHata</a>のブログです。雑多な技術ネタや、とりとめもないことを記録します。
       <ul>
         {Object.entries(posts).map(([id, module]) => {
           if (module.frontmatter) {
