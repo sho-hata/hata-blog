@@ -24,7 +24,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
         )}
         {<title>{pageTitle}</title>}
       </head>
-      <body class={"flex flex-col items-center mb-2 mx-2"}>
+      <body class={"flex flex-col items-center mb-2 mx-2 bg-slate-100"}>
         <main class={"max-w-[780px] w-screen px-6 mt-6"}>{children}</main>
       </body>
     </html>

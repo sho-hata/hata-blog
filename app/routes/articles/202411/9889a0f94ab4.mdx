@@ -1,0 +1,62 @@
+---
+title: "選択したテキストとリンクを簡単に引用できるChrome拡張機能を作った"
+date: 2024-11-02
+---
+
+## ツールの紹介
+
+選択したテキストを簡単に引用できるChrome拡張機能を作りました。
+
+https://chromewebstore.google.com/detail/link-quote-clip/hoifjgjfbccgjdcimgepihcihfnhocfb?authuser=0&hl=ja
+
+Chromeで、コピーしたい文章を選択。
+![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage1.png?raw=true)
+
+右クリックで、「Copy Selection with link」を選択。
+![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage2.png?raw=true)
+
+クリップボードに、選択した文章とリンクが以下の形式でコピーされます。
+```
+> ${selected text}
+
+${link to text}
+```
+
+実際に貼り付けると以下のようになります。
+![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage3.png?raw=true)
+
+マークダウンを書く際に、選択したテキストをテキストへのリンクとともにブロック引用で引用したいときに便利です。
+
+例1: マークダウンツールでの利用
+
+![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage4.png?raw=true)
+
+例2: リンクカード機能が搭載されているマークダウンサービスの場合
+
+![img](/images/link-quote-clip-usage.png)
+
+## なぜ作ったのか
+Chromeには、右クリックで選択したテキストをクリップボードにコピーする機能があります。
+
+![img](/images/link-quote-clip-usage2.png)
+
+ドキュメントを書くときに他のウェブサイトの文章を引用する際、上記の機能を使って引用元の文章とリンクを貼り付けていました。
+Chromeの機能では選択したテキストへのリンクをコピーしてくれますが、選択した文章とリンクを同時にコピーできません。
+
+Chromeのマーケットプレイスを調べてみても、似たような機能を持つ拡張機能はあるものの、自分の求めるいい感じに引用してくれる機能を持つものは見つからなかったため、作りました。
+
+
+## やったことなど
+ソースコードはこちらです。
+
+https://github.com/sho-hata/link-quote-clip
+
+50行にも満たないコードです。Chrome APIとClipboard APIを使って、選択したテキストとリンクをクリップボードにコピーしています。今後はショートカットキーで呼び出せるようにしようと思っています。
+
+
+`Vite`とChrome 拡張機能向けにビルドしてくれるViteプラグインの`crxjs/vite-plugin`を使って作りました。型安全にmanifest.jsonを吐き出してくれるので書きやすかったです。
+
+今回初めてマーケットプレイス向けにChrome拡張機能を作ったのですが、公開までの手順が少々面倒でした。Chromeウェブストアに公開するためには、初回$5の登録料がかかります。審査があるため公開までに数日かかりますし、審査に通るためにプライバシーポリシーを作成したり、ツールがどのようにデータを扱うか・なぜこの権限が必要なのかを説明することが求められます。とはいえ、Chromeマーケットプレイスの治安を保つための措置なので仕方ない。
+
+---
+もし同じような引用の仕方をしている方がいたら、ぜひ使ってみてください。フィードバックもらえると嬉しいです。
