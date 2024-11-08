@@ -1,11 +1,18 @@
 import { jsxRenderer } from "hono/jsx-renderer";
 import { blogName } from "../constraints";
 import styles from "../styles/style.css?url";
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
 
 export default jsxRenderer(({ children, frontmatter }) => {
   const pageTitle = frontmatter?.title
     ? `${frontmatter.title} - ${blogName}`
     : blogName;
+
+  const footerImageUrl = import.meta.env.PROD
+    ? "/img/hata.png"
+    : "/app/public/img/hata.png";
+
   return (
     <html lang="ja">
       <head>
@@ -24,8 +31,14 @@ export default jsxRenderer(({ children, frontmatter }) => {
         )}
         {<title>{pageTitle}</title>}
       </head>
-      <body class={"flex flex-col items-center mb-2 mx-2 bg-slate-100"}>
-        <main class={"max-w-[780px] w-screen px-6 mt-6"}>{children}</main>
+      <body
+        class={"flex flex-col min-h-screen items-center mb-2 mx-2 bg-slate-100"}
+      >
+        <Header blogName={blogName} />
+        <main class={"flex-grow max-w-[780px] w-screen px-6 mt-6"}>
+          {children}
+        </main>
+        <Footer imageUrl={footerImageUrl} />
       </body>
     </html>
   );
