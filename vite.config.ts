@@ -14,11 +14,12 @@ export default defineConfig(() => {
   return {
     build: {
       rollupOptions: {
-        input: ["./app/styles/style.css"],
+        input: ["./app/styles/style.css", "./app/static/img/hata.png"],
         output: {
           entryFileNames: "static/[name].js",
           assetFileNames: (assetInfo) => {
             if (assetInfo.name === "style.css") return "styles/style.css";
+            if (assetInfo.name === "hata.png") return "static/hata.png";
             return assetInfo.name ?? "";
           },
         },

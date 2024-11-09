@@ -10,7 +10,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
     : blogName;
 
   const footerImageUrl = import.meta.env.PROD
-    ? "/img/hata.png"
+    ? "/static/hata.png"
     : "/app/public/img/hata.png";
 
   return (
