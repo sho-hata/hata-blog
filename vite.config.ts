@@ -35,7 +35,15 @@ export default defineConfig(() => {
         jsxImportSource: "hono/jsx",
         remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
         rehypePlugins: [[rehypePrettyCode, { theme: "nord" }]],
+        providerImportSource: "./app/components/mdx",
       }),
     ],
+    ssr: {
+      target: "node",
+      external: ["@mdx-js/mdx", "jsdom"],
+    },
+    server: {
+      host: "0.0.0.0",
+    },
   };
 });

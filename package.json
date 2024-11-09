@@ -9,8 +9,10 @@
   },
   "private": true,
   "dependencies": {
+    "@types/jsdom": "^21.1.7",
     "hono": "^4.6.9",
     "honox": "^0.1.26",
+    "jsdom": "^25.0.1",
     "rehype-pretty-code": "^0.14.0",
     "remark-gfm": "^4.0.0",
     "shiki": "^1.22.2"

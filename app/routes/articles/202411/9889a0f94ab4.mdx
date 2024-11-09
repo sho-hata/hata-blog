@@ -5,17 +5,17 @@ date: 2024-11-02
 
 本記事ではGoのLanguage Serverであるgoplsのソースコードを読む際に役立つであろう、プロジェクトのディレクトリ構成やアーキテクチャについて軽く紹介します。
 
-## 　goplsとは
+## goplsとは
 goplsとは、オープンソースのGo言語のLanguage Serverです。Goで書かれています。
 goplsは、VSCodeなどのエディタでGoの開発する際に、補完や定義ジャンプ、リファクタリングなどの機能を提供します。普段Goで開発されている方は、普段何気なく使っているのではないでしょうか。
 goplsについては以下でも紹介しておりますので、合わせてご覧ください。
 
-https://speakerdeck.com/shohata/gonolanguage-server-protocolshi-zhuang-gopls-nozi-dong-bu-wan-noshi-zu-miwoxue-bu
+<ExternalOgp url="https://speakerdeck.com/shohata/gonolanguage-server-protocolshi-zhuang-gopls-nozi-dong-bu-wan-noshi-zu-miwoxue-bu" />
 
 ## ソースコードへのアクセス
 goplsのソースコードはGitで取得できます。
 
-https://github.com/golang/tools
+<ExternalOgp url="https://github.com/golang/tools" />
 
 
 ## 機能へのアクセスの仕方
@@ -27,7 +27,8 @@ https://github.com/golang/tools/blob/master/gopls/doc/features/transformation.md
 
 以下のインデックスページにそれぞれの機能ごとに概要がまとめられているので、まずはここから、自分の調べたい機能について調べてみるのが良いでしょう。
 
-https://github.com/golang/tools/blob/master/gopls/doc/features/README.md
+
+<ExternalOgp url="https://github.com/golang/tools/blob/master/gopls/doc/features/README.md" />
 
 :::message
 なお、機能によってはTODOになっているものもあります（例：補完機能）。
@@ -44,7 +45,7 @@ https://github.com/golang/tools/blob/master/gopls/doc/features/README.md
 最下層は、LSP（Language Server Protocol）のリクエストとレスポンスの型を定義するパッケージが配置されています。
 その上の層には、RPC に関連するパッケージ（lsprpc や server）、Goの関連ファイル（golang、mod、work、template など）に関連するパッケージが配置されています。
 
-https://github.com/golang/tools/blob/master/gopls/doc/design/implementation.md
+<ExternalOgp url="https://github.com/golang/tools/blob/master/gopls/doc/design/implementation.md" />
 
 上記のドキュメントには、先ほどの図を含めたgoplsの設計について詳しく記載されています。こちらを参考にしながら、ソースコードを読んでいくと理解が深まるでしょう。
 
@@ -65,7 +66,8 @@ https://github.com/golang/tools/blob/master/gopls/internal/protocol/tsserver.go#
 #### 設計ドキュメント
 各機能ごとではなく、全体の設計について知りたい場合は以下のドキュメントが参考になります。goplsが目標としていること、逆に目標としていないこと、アーキテクチャ決定などが記載されています。
 また、goplsはコミュニティ開発者作のツール群を統合したものであるため、統合前のツールへアクセスできるリンクも記載されています。
-https://github.com/golang/tools/blob/master/gopls/doc/design/design.md
+
+<ExternalOgp url="https://github.com/golang/tools/blob/master/gopls/doc/design/design.md" />
 
 #### Github Copilot Chat
 goplsのコードリーディングでは、VSCode限定になってしまいますが、Github Copilot Chatがおすすめです。goplsの全体やファイルのコンテキストを読み取って質問しながら進めることで、格段に効率的なコードリーディングができます。
