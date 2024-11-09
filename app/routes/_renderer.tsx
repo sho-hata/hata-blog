@@ -11,7 +11,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
 
   const footerImageUrl = import.meta.env.PROD
     ? "/static/hata.png"
-    : "/app/public/img/hata.png";
+    : "/app/static/img/hata.png";
 
   return (
     <html lang="ja">

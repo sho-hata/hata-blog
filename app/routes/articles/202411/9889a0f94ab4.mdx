@@ -1,62 +1,74 @@
 ---
-title: "選択したテキストとリンクを簡単に引用できるChrome拡張機能を作った"
+title: "goplsのソースコードの歩き方"
 date: 2024-11-02
 ---
 
-## ツールの紹介
+本記事ではGoのLanguage Serverであるgoplsのソースコードを読む際に役立つであろう、プロジェクトのディレクトリ構成やアーキテクチャについて軽く紹介します。
 
-選択したテキストを簡単に引用できるChrome拡張機能を作りました。
+## 　goplsとは
+goplsとは、オープンソースのGo言語のLanguage Serverです。Goで書かれています。
+goplsは、VSCodeなどのエディタでGoの開発する際に、補完や定義ジャンプ、リファクタリングなどの機能を提供します。普段Goで開発されている方は、普段何気なく使っているのではないでしょうか。
+goplsについては以下でも紹介しておりますので、合わせてご覧ください。
 
-https://chromewebstore.google.com/detail/link-quote-clip/hoifjgjfbccgjdcimgepihcihfnhocfb?authuser=0&hl=ja
+https://speakerdeck.com/shohata/gonolanguage-server-protocolshi-zhuang-gopls-nozi-dong-bu-wan-noshi-zu-miwoxue-bu
 
-Chromeで、コピーしたい文章を選択。
-![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage1.png?raw=true)
+## ソースコードへのアクセス
+goplsのソースコードはGitで取得できます。
 
-右クリックで、「Copy Selection with link」を選択。
-![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage2.png?raw=true)
-
-クリップボードに、選択した文章とリンクが以下の形式でコピーされます。
-```
-> ${selected text}
-
-${link to text}
-```
-
-実際に貼り付けると以下のようになります。
-![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage3.png?raw=true)
-
-マークダウンを書く際に、選択したテキストをテキストへのリンクとともにブロック引用で引用したいときに便利です。
-
-例1: マークダウンツールでの利用
-
-![img](https://github.com/sho-hata/link-quote-clip/blob/main/images/doc/usage4.png?raw=true)
-
-例2: リンクカード機能が搭載されているマークダウンサービスの場合
-
-![img](/images/link-quote-clip-usage.png)
-
-## なぜ作ったのか
-Chromeには、右クリックで選択したテキストをクリップボードにコピーする機能があります。
-
-![img](/images/link-quote-clip-usage2.png)
-
-ドキュメントを書くときに他のウェブサイトの文章を引用する際、上記の機能を使って引用元の文章とリンクを貼り付けていました。
-Chromeの機能では選択したテキストへのリンクをコピーしてくれますが、選択した文章とリンクを同時にコピーできません。
-
-Chromeのマーケットプレイスを調べてみても、似たような機能を持つ拡張機能はあるものの、自分の求めるいい感じに引用してくれる機能を持つものは見つからなかったため、作りました。
+https://github.com/golang/tools
 
 
-## やったことなど
-ソースコードはこちらです。
+## 機能へのアクセスの仕方
+goplsは「定義ジャンプ」や「補完」など、Language Serverが提供する機能を一通り実装しています。
 
-https://github.com/sho-hata/link-quote-clip
+それぞれの機能ごとに、各機能の簡単な紹介、クライアントのサポート状況、既存の問題点などがドキュメントにまとめています。
+たとえばフォーマットやシンボルの変換機能を提供するtransfomationについては以下のページに記載があります。
+https://github.com/golang/tools/blob/master/gopls/doc/features/transformation.md#formatting
 
-50行にも満たないコードです。Chrome APIとClipboard APIを使って、選択したテキストとリンクをクリップボードにコピーしています。今後はショートカットキーで呼び出せるようにしようと思っています。
+以下のインデックスページにそれぞれの機能ごとに概要がまとめられているので、まずはここから、自分の調べたい機能について調べてみるのが良いでしょう。
+
+https://github.com/golang/tools/blob/master/gopls/doc/features/README.md
+
+:::message
+なお、機能によってはTODOになっているものもあります（例：補完機能）。
+:::
+
+## アーキテクチャ・設計
+調べたい機能についての概要がわかったら、次にその機能がどのように実装されているかを調べていきます。
+ソースコードを読んでいくにあたって、まず全体像を把握しておかないとどこから読んでいけばいいのかわかりません。
+
+以下の図は、Goのimportの依存関係に基づいたコンポーネント群の関係が示されています(gopls公式より拝借)。
+
+![img](https://raw.githubusercontent.com/golang/tools/8b51d6644fa2920557841cd6c6e1b21424c8a626/gopls/doc/design/architecture.svg)
+
+最下層は、LSP（Language Server Protocol）のリクエストとレスポンスの型を定義するパッケージが配置されています。
+その上の層には、RPC に関連するパッケージ（lsprpc や server）、Goの関連ファイル（golang、mod、work、template など）に関連するパッケージが配置されています。
+
+https://github.com/golang/tools/blob/master/gopls/doc/design/implementation.md
+
+上記のドキュメントには、先ほどの図を含めたgoplsの設計について詳しく記載されています。こちらを参考にしながら、ソースコードを読んでいくと理解が深まるでしょう。
+
+### 探検の始め方
+大枠について理解したところで、ソースコードの探検を始めていきましょう。
+
+さきほどの図は、主要コンポーネントを完全なリストではないので詳細は省かれていますが、主要機能（例：定義ジャンプ、補完、フォーマット）のコアとなる処理は、[internal/golang/](https://github.com/golang/tools/tree/master/gopls/internal/golang)に配置されています。
+#### 手っ取り早く機能のコアロジックから追っていきたい場合
+このディレクトリから該当の機能と対応したファイルを探し、読み始めると良いでしょう。
+ちなみに補完処理に関しては複雑な機能のため、さらにcompletionパッケージに分かれています。
+
+#### サーバーのエントリーポイントから追っていきたい場合
+goplsはLauguage Server、つまりサーバーなので、クライアントからのリクエストを受け取り、それに対してレスポンスを返すという基本的な機能を持っています。普段、Web APIを開発している方は、Serverパッケージから読み始めると理解しやすいです。
+https://github.com/golang/tools/blob/master/gopls/internal/protocol/tsserver.go#L168 あたりにリクエストハンドラが実装されているので、調べたい機能のケースから追っていくと追いやすいです。
 
 
-`Vite`とChrome 拡張機能向けにビルドしてくれるViteプラグインの`crxjs/vite-plugin`を使って作りました。型安全にmanifest.jsonを吐き出してくれるので書きやすかったです。
+### 探検道具
+#### 設計ドキュメント
+各機能ごとではなく、全体の設計について知りたい場合は以下のドキュメントが参考になります。goplsが目標としていること、逆に目標としていないこと、アーキテクチャ決定などが記載されています。
+また、goplsはコミュニティ開発者作のツール群を統合したものであるため、統合前のツールへアクセスできるリンクも記載されています。
+https://github.com/golang/tools/blob/master/gopls/doc/design/design.md
 
-今回初めてマーケットプレイス向けにChrome拡張機能を作ったのですが、公開までの手順が少々面倒でした。Chromeウェブストアに公開するためには、初回$5の登録料がかかります。審査があるため公開までに数日かかりますし、審査に通るためにプライバシーポリシーを作成したり、ツールがどのようにデータを扱うか・なぜこの権限が必要なのかを説明することが求められます。とはいえ、Chromeマーケットプレイスの治安を保つための措置なので仕方ない。
+#### Github Copilot Chat
+goplsのコードリーディングでは、VSCode限定になってしまいますが、Github Copilot Chatがおすすめです。goplsの全体やファイルのコンテキストを読み取って質問しながら進めることで、格段に効率的なコードリーディングができます。
 
----
-もし同じような引用の仕方をしている方がいたら、ぜひ使ってみてください。フィードバックもらえると嬉しいです。
+## まとめ
+本記事ではgoplsのソースコードを読む際に役立つであろう、プロジェクトのパッケージ構成やアーキテクチャについて軽く紹介しました。goplsについての解説記事はまだまだ少ないので、この記事がgoplsのソースコードを読みとくきっかけになれば幸いです。
