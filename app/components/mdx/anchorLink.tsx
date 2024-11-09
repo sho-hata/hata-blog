@@ -15,9 +15,7 @@ export const AnchorLink = ({
     <a
       href={href}
       {...rest}
-      className={`text-blue-500 dark:text-blue-400 underline mx-1 ${
-        className ? className : ""
-      }`}
+      className={`underline mx-1 ${className ? className : ""}`}
       target={isFootNoteBackRef || isFootnoteRef ? undefined : "_blank"}
       rel="noreferrer"
     >
