@@ -1,5 +1,5 @@
 import type { FC } from "hono/jsx";
-import { GithubIcon, HomeIcon, XIcon } from "./icons";
+import { GithubIcon, XIcon } from "./icons";
 import { blogName } from "../constraints";
 
 type Props = {
@@ -17,9 +17,6 @@ export const Footer: FC<Props> = ({ imageUrl }) => {
             金融に携わっているソフトウェアエンジニア。週末はコーヒー豆を焙煎しています。
           </p>
           <div class={"flex gap-2 items-center"}>
-            <a href="https://sho-hata.com" rel="noreferrer">
-              <HomeIcon />
-            </a>
             <a href="https://x.com/sho_hata_" target="_blank" rel="noreferrer">
               <XIcon />
             </a>
