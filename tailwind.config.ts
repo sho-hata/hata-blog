@@ -1,9 +1,12 @@
 import type { Config } from "tailwindcss";
+const defaultTheme = require("tailwindcss/defaultTheme");
 export default {
   content: ["./app/**/*.tsx"],
   theme: {
     extend: {
-      // TODO: Font
+      fontFamily: {
+        sans: ["Hiragino Kaku Gothic ProN", ...defaultTheme.fontFamily.sans],
+      },
     },
   },
   plugins: [],
