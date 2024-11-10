@@ -2,16 +2,11 @@ import { jsxRenderer } from "hono/jsx-renderer";
 import { blogName } from "../constraints";
 import styles from "../styles/style.css?url";
 import { Header } from "../components/header";
-import { Footer } from "../components/footer";
 
 export default jsxRenderer(({ children, frontmatter }) => {
   const pageTitle = frontmatter?.title
     ? `${frontmatter.title} - ${blogName}`
     : blogName;
-
-  const footerImageUrl = import.meta.env.PROD
-    ? "/static/hata.png"
-    : "/app/static/img/hata.png";
 
   return (
     <html lang="ja">
@@ -38,7 +33,11 @@ export default jsxRenderer(({ children, frontmatter }) => {
         <main class={"flex-grow max-w-[780px] w-screen px-6 mt-6"}>
           {children}
         </main>
-        <Footer imageUrl={footerImageUrl} />
+        <footer class={"py-8 max-w-[780px] w-screen px-6"}>
+          <div class={"mt-8 text-gray-500 text-sm text-center"}>
+            {`© 2024 ${blogName}`}
+          </div>
+        </footer>
       </body>
     </html>
   );
