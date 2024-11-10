@@ -7,6 +7,7 @@ import {
   XIcon,
 } from "../components/icons";
 import type { Frontmatter } from "../types";
+import { formatDate } from "../lib/format/date";
 
 const sortPostsByDate = (
   [, a]: [string, { frontmatter: Frontmatter }],
@@ -81,7 +82,7 @@ export default function Top() {
                 <Fragment key={id}>
                   <div class={"flex flex-col gap-0"}>
                     <time class={"text-sm max-md:text-xs"}>
-                      {module.frontmatter.date}
+                      {formatDate(module.frontmatter.date)}
                     </time>
                     <a
                       class={"text-lg max-md:text-base underline"}
