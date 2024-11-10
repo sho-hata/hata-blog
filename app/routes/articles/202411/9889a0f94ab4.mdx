@@ -28,11 +28,9 @@ https://github.com/golang/tools/blob/master/gopls/doc/features/transformation.md
 以下のインデックスページにそれぞれの機能ごとに概要がまとめられているので、まずはここから、自分の調べたい機能について調べてみるのが良いでしょう。
 
 
-<ExternalOgp url="https://github.com/golang/tools/blob/master/gopls/doc/features/README.md" />
+https://github.com/golang/tools/blob/master/gopls/doc/features/README.md
 
-:::message
 なお、機能によってはTODOになっているものもあります（例：補完機能）。
-:::
 
 ## アーキテクチャ・設計
 調べたい機能についての概要がわかったら、次にその機能がどのように実装されているかを調べていきます。
@@ -45,7 +43,7 @@ https://github.com/golang/tools/blob/master/gopls/doc/features/transformation.md
 最下層は、LSP（Language Server Protocol）のリクエストとレスポンスの型を定義するパッケージが配置されています。
 その上の層には、RPC に関連するパッケージ（lsprpc や server）、Goの関連ファイル（golang、mod、work、template など）に関連するパッケージが配置されています。
 
-<ExternalOgp url="https://github.com/golang/tools/blob/master/gopls/doc/design/implementation.md" />
+https://github.com/golang/tools/blob/master/gopls/doc/design/implementation.md
 
 上記のドキュメントには、先ほどの図を含めたgoplsの設計について詳しく記載されています。こちらを参考にしながら、ソースコードを読んでいくと理解が深まるでしょう。
 
@@ -67,7 +65,7 @@ https://github.com/golang/tools/blob/master/gopls/internal/protocol/tsserver.go#
 各機能ごとではなく、全体の設計について知りたい場合は以下のドキュメントが参考になります。goplsが目標としていること、逆に目標としていないこと、アーキテクチャ決定などが記載されています。
 また、goplsはコミュニティ開発者作のツール群を統合したものであるため、統合前のツールへアクセスできるリンクも記載されています。
 
-<ExternalOgp url="https://github.com/golang/tools/blob/master/gopls/doc/design/design.md" />
+https://github.com/golang/tools/blob/master/gopls/doc/design/design.md
 
 #### Github Copilot Chat
 goplsのコードリーディングでは、VSCode限定になってしまいますが、Github Copilot Chatがおすすめです。goplsの全体やファイルのコンテキストを読み取って質問しながら進めることで、格段に効率的なコードリーディングができます。

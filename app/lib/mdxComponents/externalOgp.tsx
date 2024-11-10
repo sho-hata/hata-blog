@@ -66,11 +66,13 @@ export const ExternalOgp = async (props: Props) => {
     >
       <div
         class={
-          "flex border dark:border-slate-200 rounded-lg  no-underline h-[136px] max-md:h-28 my-4"
+          "flex border dark:border-slate-200 rounded-lg no-underline h-[136px] max-md:h-28 my-4"
         }
       >
         <div class="flex flex-col justify-between px-6 py-4 h-full w-full max-md:px-4">
-          <span class={"font-bold text-ellipsis line-clamp-1 max-md:text-sm"}>
+          <span
+            class={"font-extrabold text-ellipsis line-clamp-1 max-md:text-sm"}
+          >
             {ogp.title}
           </span>
           <span class={"text-sm text-ellipsis line-clamp-2 max-md:text-xs"}>

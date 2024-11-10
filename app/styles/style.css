@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .markdown {
-  @apply text-gray-900 break-words box-border tracking-wide antialiased;
+  @apply text-slate-950 break-words box-border tracking-wide antialiased;
 }
 
 .markdown > * + * {
@@ -25,7 +25,7 @@
 }
 
 .markdown a {
-  @apply  underline decoration-dotted decoration-gray-400;
+  @apply  underline decoration-clone decoration-slate-400;
 }
 
 .markdown strong a {
@@ -57,19 +57,19 @@
 }
 
 .markdown h6 {
-  @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
+  @apply leading-tight text-sm font-semibold text-slate-600 mb-4 mt-6;
 }
 
 .markdown blockquote {
-  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+  @apply text-base border-l-4 border-slate-300 pl-4 pr-4 text-slate-600;
 }
 
 .markdown code {
-  @apply font-mono text-sm inline bg-gray-200 text-gray-600 rounded px-1.5 py-1 tracking-wide;
+  @apply font-mono text-sm inline bg-slate-200 text-slate-600 rounded px-1.5 py-1 tracking-wide;
 }
 
 .markdown pre {
-  @apply bg-gray-100 rounded p-1;
+  @apply bg-slate-100 rounded p-1;
 }
 
 .markdown pre code {
@@ -89,7 +89,7 @@
 }
 
 .markdown table {
-  @apply text-base border-gray-600;
+  @apply text-base border-slate-600;
 }
 
 .markdown th {
@@ -102,7 +102,7 @@
 
 /* Override pygments style background color. */
 .markdown .highlight pre {
-  @apply bg-gray-100 !important;
+  @apply bg-slate-100 !important;
 }
 
 .source {
@@ -115,5 +115,5 @@
 }
 
 .sr-only {
-  @apply border-t border-gray-300 my-3;
+  @apply border-t border-slate-300 my-3;
 }
