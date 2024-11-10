@@ -3,8 +3,8 @@ import { GithubIcon, XIcon } from "../../components/icons";
 
 export default jsxRenderer(({ children, title, Layout }) => {
   const imageUrl = import.meta.env.PROD
-    ? "/static/hata.png"
-    : "/app/static/img/hata.png";
+    ? "/static/me.png"
+    : "/app/static/img/me.png";
 
   return (
     <Layout>
@@ -12,19 +12,21 @@ export default jsxRenderer(({ children, title, Layout }) => {
         <article class={"markdown"}>{children}</article>
       </div>
       <div class={"flex items-center space-x-4"}>
-        <a href="/">
-          <img
-            src={imageUrl}
-            alt={"Profile"}
-            class={"w-20 h-20 rounded-full"}
-          />
-        </a>
+        <div class={"flex-shrink-0"}>
+          <a href="/">
+            <img
+              src={imageUrl}
+              alt={"Profile"}
+              class={"w-20 h-20 rounded-full"}
+            />
+          </a>
+        </div>
         <div class={"flex flex-col gap-2"}>
           <a href="/" class={"font-semibold"}>
             Shoki Hata
           </a>
           <p class={"text-sm"}>
-            金融に携わっているソフトウェアエンジニア。週末はコーヒー豆を焙煎しています。
+            決済領域のソフトウェアエンジニア。週末はコーヒー豆を焙煎しています。
           </p>
           <div class={"flex gap-2 items-center"}>
             <a href="https://x.com/sho_hata_" target="_blank" rel="noreferrer">

@@ -21,8 +21,8 @@ const sortPostsByDate = (
 
 export default function Top() {
   const imageUrl = import.meta.env.PROD
-    ? "/static/hata.png"
-    : "/app/static/img/hata.png";
+    ? "/static/me.png"
+    : "/app/static/img/me.png";
 
   const articles = import.meta.glob<{ frontmatter: Frontmatter }>(
     "./articles/**/*.mdx",
