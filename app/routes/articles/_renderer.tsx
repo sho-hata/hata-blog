@@ -12,9 +12,17 @@ export default jsxRenderer(({ children, title, Layout }) => {
         <article class={"markdown"}>{children}</article>
       </div>
       <div class={"flex items-center space-x-4"}>
-        <img src={imageUrl} alt={"Profile"} class={"w-20 h-20 rounded-full"} />
+        <a href="/">
+          <img
+            src={imageUrl}
+            alt={"Profile"}
+            class={"w-20 h-20 rounded-full"}
+          />
+        </a>
         <div class={"flex flex-col gap-2"}>
-          <span class={"font-semibold"}>Shoki Hata</span>
+          <a href="/" class={"font-semibold"}>
+            Shoki Hata
+          </a>
           <p class={"text-sm"}>
             金融に携わっているソフトウェアエンジニア。週末はコーヒー豆を焙煎しています。
           </p>
