@@ -30,9 +30,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
         class={"flex flex-col min-h-screen items-center mb-2 mx-2 bg-slate-100"}
       >
         <Header blogName={blogName} />
-        <main class={"flex-grow max-w-[780px] w-screen px-6 mt-6"}>
-          {children}
-        </main>
+        <main class={"flex-grow max-w-[780px] w-screen"}>{children}</main>
         <footer class={"py-8 max-w-[780px] w-screen px-6"}>
           <div class={"mt-8 text-gray-500 text-sm text-center"}>
             {`© 2024 ${blogName}`}
