@@ -1,4 +1,3 @@
-import { Fragment } from "hono/jsx/jsx-runtime";
 import { Article } from "../components/article";
 import {
   GithubIcon,
@@ -7,32 +6,14 @@ import {
   SizuMeIcon,
   XIcon,
 } from "../components/icons";
-import type { Frontmatter } from "../types";
-
-const sortPostsByDate = (
-  [, a]: [string, { frontmatter: Frontmatter }],
-  [, b]: [string, { frontmatter: Frontmatter }],
-) => {
-  return (
-    new Date(b.frontmatter.date).getTime() -
-    new Date(a.frontmatter.date).getTime()
-  );
-};
+import { getAllArticles } from "../lib/article";
 
 export default function Top() {
   const imageUrl = import.meta.env.PROD
     ? "/static/me.png"
     : "/app/static/img/me.png";
 
-  const articles = import.meta.glob<{ frontmatter: Frontmatter }>(
-    "./articles/**/*.mdx",
-    {
-      eager: true,
-    },
-  );
-
-  const sortedArticles = Object.entries(articles).sort(sortPostsByDate);
-
+  const articles = getAllArticles();
   return (
     <div class={"px-6 mt-6"}>
       <section class="py-12 bg-slate-50 rounded-lg shadow-md">
@@ -81,16 +62,15 @@ export default function Top() {
             </a>
           </div>
           <div class={"mt-6 flex flex-col gap-8"}>
-            {sortedArticles.map(([id, module]) => {
-              if (module.frontmatter) {
+            {articles.map(({ entryName, frontmatter }) => {
+              if (entryName) {
                 return (
-                  <Fragment key={id}>
-                    <Article
-                      title={module.frontmatter.title}
-                      date={module.frontmatter.date}
-                      entryName={id}
-                    />
-                  </Fragment>
+                  <Article
+                    key={entryName}
+                    title={frontmatter.title}
+                    date={frontmatter.date}
+                    entryName={entryName}
+                  />
                 );
               }
             })}
