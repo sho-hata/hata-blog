@@ -1,7 +1,7 @@
 import { jsxRenderer } from "hono/jsx-renderer";
 import { GithubIcon, XIcon } from "../../components/icons";
 
-export default jsxRenderer(({ children, title, Layout }) => {
+export default jsxRenderer(({ children, Layout }) => {
   const imageUrl = import.meta.env.PROD
     ? "/static/me.png"
     : "/app/static/img/me.png";
