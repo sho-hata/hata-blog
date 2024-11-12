@@ -1,12 +1,12 @@
-import mdx from "@mdx-js/rollup";
 import pages from "@hono/vite-cloudflare-pages";
+import ssg from "@hono/vite-ssg";
+import mdx from "@mdx-js/rollup";
 import honox from "honox/vite";
+import rehypePrettyCode from "rehype-pretty-code";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig } from "vite";
-import rehypePrettyCode from "rehype-pretty-code";
-import remarkGfm from "remark-gfm";
-import ssg from "@hono/vite-ssg";
 
 const entry = "./app/server.ts";
 
@@ -40,7 +40,14 @@ export default defineConfig(() => {
     ],
     ssr: {
       target: "node",
-      external: ["@mdx-js/mdx", "jsdom"],
+      external: [
+        "@mdx-js/mdx",
+        "jsdom",
+        "satori",
+        "@resvg/resvg-js",
+        "budoux",
+        "unified",
+      ],
     },
     server: {
       host: "0.0.0.0",

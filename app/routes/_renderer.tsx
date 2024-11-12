@@ -1,12 +1,23 @@
-import { jsxRenderer } from "hono/jsx-renderer";
-import { blogName } from "../constraints";
-import styles from "../styles/style.css?url";
+import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Header } from "../components/header";
+import { blogName } from "../constraints";
+import { getAllArticles } from "../lib/article";
+import styles from "../styles/style.css?url";
 
-export default jsxRenderer(({ children, frontmatter }) => {
-  const pageTitle = frontmatter?.title
-    ? `${frontmatter.title} - ${blogName}`
+export default jsxRenderer(({ children }) => {
+  const c = useRequestContext();
+  const currentUrl = c.req.url;
+
+  const article = getAllArticles().find(
+    (a) => a.entryName === c.req.routePath.slice(1),
+  );
+  const pageTitle = article?.frontmatter.title
+    ? `${article?.frontmatter.title} - ${blogName}`
     : blogName;
+
+  const description = "雑多な技術ネタや、とりとめもないことを記録したブログ";
+  const slug = article?.entryName?.match(/(?<=articles\/\d+\/)[a-z0-9]+/);
+  const ogpPath = slug ? `/ogps/${slug[0]}.png` : "/ogp.png";
 
   return (
     <html lang="ja">
@@ -24,6 +35,18 @@ export default jsxRenderer(({ children, frontmatter }) => {
         ) : (
           <link rel="icon" href="/favicon.ico" />
         )}
+        <meta name="description" content={description} />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:site_name" content={blogName} />
+        <meta property="og:image" content={`https://sho-hata.com${ogpPath}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@sho_hata_" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`https://sho-hata.com${ogpPath}`} />
         {<title>{pageTitle}</title>}
       </head>
       <body
