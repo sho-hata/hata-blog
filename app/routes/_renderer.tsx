@@ -15,7 +15,9 @@ export default jsxRenderer(({ children }) => {
     ? `${article?.frontmatter.title} - ${blogName}`
     : blogName;
 
-  const description = "雑多な技術ネタや、とりとめもないことを記録したブログ";
+  const description =
+    article?.frontmatter.description ??
+    "雑多な技術ネタや、とりとめもないことを記録したブログ";
   const slug = article?.entryName?.match(/(?<=articles\/\d+\/)[a-z0-9]+/);
   const ogpPath = slug ? `/ogps/${slug[0]}.png` : "/ogp.png";
 
