@@ -43,12 +43,18 @@ export default jsxRenderer(({ children }) => {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:site_name" content={blogName} />
-        <meta property="og:image" content={`https://sho-hata.com${ogpPath}`} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image"
+          content={"https://sho-hata.com/static/me.png"}
+        />
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@sho_hata_" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={`https://sho-hata.com${ogpPath}`} />
+        <meta
+          name="twitter:image"
+          content={"https://sho-hata.com/static/me.png"}
+        />
         {<title>{pageTitle}</title>}
       </head>
       <body
