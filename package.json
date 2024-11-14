@@ -9,15 +9,12 @@
   },
   "private": true,
   "dependencies": {
-    "@resvg/resvg-js": "^2.6.2",
     "@types/jsdom": "^21.1.7",
-    "budoux": "^0.6.3",
     "hono": "^4.6.9",
     "honox": "^0.1.26",
     "jsdom": "^25.0.1",
     "rehype-pretty-code": "^0.14.0",
     "remark-gfm": "^4.0.0",
-    "satori": "^0.11.3",
     "shiki": "^1.22.2"
   },
   "devDependencies": {

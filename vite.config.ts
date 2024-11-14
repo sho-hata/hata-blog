@@ -40,14 +40,7 @@ export default defineConfig(() => {
     ],
     ssr: {
       target: "node",
-      external: [
-        "@mdx-js/mdx",
-        "jsdom",
-        "satori",
-        "@resvg/resvg-js",
-        "budoux",
-        "unified",
-      ],
+      external: ["@mdx-js/mdx", "jsdom", "unified"],
     },
     server: {
       host: "0.0.0.0",

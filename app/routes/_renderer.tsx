@@ -18,8 +18,6 @@ export default jsxRenderer(({ children }) => {
   const description =
     article?.frontmatter.description ??
     "雑多な技術ネタや、とりとめもないことを記録したブログ";
-  const slug = article?.entryName?.match(/(?<=articles\/\d+\/)[a-z0-9]+/);
-  const ogpPath = slug ? `/ogps/${slug[0]}.png` : "/ogp.png";
 
   return (
     <html lang="ja">
