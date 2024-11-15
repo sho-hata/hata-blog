@@ -17,9 +17,7 @@ export default jsxRenderer(({ children, Layout, frontmatter }) => {
             <article class={"markdown"}>{children}</article>
           </div>
           <a
-            href={`https://twitter.com/intent/tweet?url=https://sho-hata.com${
-              currentPath
-            }&text=${frontmatter.title}${" - "}hata's blog`}
+            href={`https://twitter.com/intent/tweet?url=https://sho-hata.com${currentPath}&text=${frontmatter.title}${" | "}hata's blog`}
             referrerpolicy="no-referrer"
             class={"flex hover:opacity-70 transition-opacity"}
           >
