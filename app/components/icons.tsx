@@ -1,7 +1,11 @@
-export const GithubIcon = () => (
+type IconProps = {
+  size?: number;
+};
+
+export const GithubIcon = (props: IconProps) => (
   <svg
     class="dark:fill-dark"
-    height={20}
+    height={props.size ?? 20}
     viewBox="0 0 40 40"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -10,10 +14,8 @@ export const GithubIcon = () => (
   </svg>
 );
 
-type XIconProps = {
-  size?: number;
-};
-export const XIcon = (props: XIconProps) => (
+
+export const XIcon = (props: IconProps) => (
   <svg
     class={"dark:fill-white stroke-black fill-black"}
     height={props.size ?? 16}
@@ -26,10 +28,7 @@ export const XIcon = (props: XIconProps) => (
   </svg>
 );
 
-type HomeIconProps = {
-  size?: number;
-};
-export const HomeIcon = (props: HomeIconProps) => (
+export const HomeIcon = (props: IconProps) => (
   <svg
     class="stroke-black"
     height={props.size ?? 20}
@@ -47,10 +46,10 @@ export const HomeIcon = (props: HomeIconProps) => (
   </svg>
 );
 
-export const SizuMeIcon = () => (
+export const SizuMeIcon = (props: IconProps) => (
   <svg
     class="stroke-black"
-    width={16}
+    width={props.size ?? 16}
     fill="none"
     viewBox="0 0 25 31"
     xmlns="http://www.w3.org/2000/svg"
@@ -70,9 +69,9 @@ export const SizuMeIcon = () => (
   </svg>
 );
 
-export const NoteIcon = () => (
+export const NoteIcon = (props: IconProps) => (
   <svg
-    height="10"
+    height={props.size ?? 10}
     viewBox="0 0 93 21"
     class="dark:fill-dark"
     xmlns="http://www.w3.org/2000/svg"

@@ -38,27 +38,27 @@ export default function Top() {
               target="_blank"
               rel="noreferrer"
             >
-              <HomeIcon />
+              <HomeIcon size={22}/>
             </a>
             <a href="https://x.com/sho_hata_" target="_blank" rel="noreferrer">
-              <XIcon />
+              <XIcon size={20}/>
             </a>
             <a
               href="https://github.com/sho-hata"
               target="_blank"
               rel="noreferrer"
             >
-              <GithubIcon />
+              <GithubIcon size={22} />
             </a>
             <a href="https://sizu.me/sho_hata" target="_blank" rel="noreferrer">
-              <SizuMeIcon />
+              <SizuMeIcon size={20}/>
             </a>
             <a
               href="https://note.com/sho_hata/"
               target="_blank"
               rel="noreferrer"
             >
-              <NoteIcon />
+              <NoteIcon size={10}/>
             </a>
           </div>
           <div class={"mt-6 flex flex-col gap-8"}>
