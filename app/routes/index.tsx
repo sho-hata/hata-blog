@@ -36,29 +36,37 @@ export default function Top() {
             <a
               href="https://gist.github.com/sho-hata/94c4a5066b101d98080abd6ef45a44b0"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
             >
-              <HomeIcon size={22}/>
+              <HomeIcon size={22} title="@sho-hata" />
             </a>
-            <a href="https://x.com/sho_hata_" target="_blank" rel="noreferrer">
-              <XIcon size={20}/>
+            <a
+              href="https://x.com/sho_hata_"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <XIcon size={20} title="@sho_hata_" />
             </a>
             <a
               href="https://github.com/sho-hata"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
             >
-              <GithubIcon size={22} />
+              <GithubIcon size={22} title="@sho-hata" />
             </a>
-            <a href="https://sizu.me/sho_hata" target="_blank" rel="noreferrer">
-              <SizuMeIcon size={20}/>
+            <a
+              href="https://sizu.me/sho_hata"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <SizuMeIcon size={20} title="@sho_hata" />
             </a>
             <a
               href="https://note.com/sho_hata/"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
             >
-              <NoteIcon size={10}/>
+              <NoteIcon size={10} title="@sho_hata" />
             </a>
           </div>
           <div class={"mt-6 flex flex-col gap-8"}>

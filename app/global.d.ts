@@ -3,7 +3,6 @@ import type Frontmatter from "./types";
 
 type Head = {
   title?: string;
-  frontmatter?: Frontmatter;
   entryName?: string;
 };
 
@@ -11,7 +10,7 @@ declare module "hono" {
   interface ContextRenderer {
     (
       content: string | Promise<string>,
-      head?: Head,
+      head?: Head & {frontmatter: Frontmatter},
     ): Response | Promise<Response>;
   }
 }

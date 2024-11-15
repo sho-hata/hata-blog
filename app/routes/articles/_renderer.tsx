@@ -1,16 +1,30 @@
-import { jsxRenderer } from "hono/jsx-renderer";
+import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { GithubIcon, XIcon } from "../../components/icons";
 
-export default jsxRenderer(({ children, Layout }) => {
+export default jsxRenderer(({ children, Layout, frontmatter }) => {
   const imageUrl = import.meta.env.PROD
     ? "/static/me.png"
     : "/app/static/img/me.png";
+
+  const c = useRequestContext();
+  const currentPath = c.req.path;
 
   return (
     <Layout>
       <div class={"mt-6 sm:px-6"}>
         <div class="bg-slate-50 shadow-sm px-8 py-4 mb-12">
-          <article class={"markdown"}>{children}</article>
+          <div class={"mb-8"}>
+            <article class={"markdown"}>{children}</article>
+          </div>
+          <a
+            href={`https://twitter.com/intent/tweet?url=https://sho-hata.com${
+              currentPath
+            }&text=${frontmatter.title}${" - "}hata's blog`}
+            referrerpolicy="no-referrer"
+            class={"flex hover:opacity-70 transition-opacity"}
+          >
+            <XIcon size={26} title="x(Twitter)にポスト" />
+          </a>
         </div>
         <div class={"flex items-center space-x-4 px-6"}>
           <div class={"flex-shrink-0"}>
@@ -33,16 +47,16 @@ export default jsxRenderer(({ children, Layout }) => {
               <a
                 href="https://x.com/sho_hata_"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
-                <XIcon />
+                <XIcon title="@sho_hata_" />
               </a>
               <a
                 href="https://github.com/sho-hata"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
-                <GithubIcon />
+                <GithubIcon title="@sho-hata" />
               </a>
             </div>
           </div>
