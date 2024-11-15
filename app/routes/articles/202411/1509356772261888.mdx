@@ -4,11 +4,10 @@ date: 2024-11-014
 description: 仕事やOSSのプロジェクトをcloneしてからまずやることを紹介します。
 ---
 
-この記事では、私が仕事やOSSプロジェクトをセットアップする際にやっていることを紹介します。主にgit hook の設定や作業メモの作成のtipsなどです。
-この記事を読まれる方にとっては今更な知識が多いですが、自分のためにもまとめておきます。
+この記事では、私が仕事やOSSプロジェクトをセットアップする際にやっていることを紹介します。主にgit hook の設定や作業メモの作成のtipsなどです。この記事を読まれる方にとっては今更な知識が多いですが、自分のためにもまとめておきます。
 
 ## ghqでリポジトリをcloneする
-gitプロジェクトは基本的にghqでcloneします。ghqはリポジトリを特定のディレクトリ`以下にcloneしてくれるツールです。リポジトリの管理がしやすくなるのでおすすめです。
+gitプロジェクトは基本的にghqでcloneします。ghqはリポジトリを特定のディレクトリ以下にcloneしてくれるツールです。リポジトリの管理がしやすくなるのでおすすめです。
 
 <ExternalOgp url="https://github.com/x-motemen/ghq" />
 
@@ -17,6 +16,8 @@ ghq get https://github.com/hoge/hoge.git
 ```
 
 ghqでリポジトリを管理する一番の恩恵は、なんといってもpeco等のインクリメンタルサーチが可能になるツールと組み合わせて、リポジトリ移動が便利になることです。
+
+
 ghq + インクリメンタルサーチツールを使ったリポジトリ管理の記事はいくらでもあるので、詳しい説明はそちらに譲ります。
 
 <ExternalOgp url="https://zenn.dev/oreo2990/articles/13c80cf34a95af" />
@@ -27,10 +28,12 @@ ghq + インクリメンタルサーチツールを使ったリポジトリ管�
 ですが人間なので、ついつい忘れてしまうこともあります。そのため、git hookを使ってチェックするようにしています。
 git hookは、gitのコマンドを実行する際に自動で実行されるスクリプトです。`pre-commit`や`pre-push`などがあります。私は主にpre-pushを使っています。一時期はpre-commitも使っていましたが、作業効率が落ちると感じたのでやめました。
 
+
 git hookの設定には、lefthookを使っています。lefthookは、git hookの設定を簡単にしてくれるツールです。
 <ExternalOgp url="https://github.com/evilmartians/lefthook?tab=readme-ov-file" />
 
 以前は[husky](https://typicode.github.io/husky/)と[lint-staged](https://github.com/lint-staged/lint-staged)を組み合わせて使っていたのですが、ツールが2つ必要かつ依存関係が多い[^1]ことと、huskyはNode.jsが必要になるのが面倒に感じ、Go製のlefthookに乗り換えました。
+
 
 lefthookはプロジェクト配下で`lefthook install`をするとボイラープレートが生成されるので、あとは`.lefthook.yml`にhookの設定を書くだけなのですが。自分は運用にいくつかの味付けをしています。
 
@@ -42,12 +45,29 @@ lefthookはプロジェクト配下で`lefthook install`をするとボイラー
 そこで、`~/.config/git/ignore`に`lefthook.yml`を追加し、git管理下に設定ファイルが入らないようにしています。
 
 ```bash
+# ~/.config/git/ignore
 lefthook.yml
 ```
 
 少し本末転倒感があり、git hookマネージャを使わずgit hookに手作業でスクリプトを追加した方が良いのではないかと思うかもしれません。
 
+
 ただ、lefthookは実行時に適切なファイルに置き換えられるファイルテンプレート機能[^2]（たとえば`{push_files}`という変数を使うことで、コミットされたがpush前のファイルのみを対象にチェックできる）をはじめ、便利な機能があるのでこういった運用をしています。
+
+
+あとは、`lefthook.yml`のコマンドのプレフィックスを数字にして、実行順を制御するくらいでしょうか。
+```yml
+# lefthook.yml
+pre-push:
+	commands:
+		1_test:
+			run: go test ./... -shuffle
+		2_lint:
+			run: golangci-lint run
+```
+
+## おわりに
+個人的にやっているgitプロジェクトのセットアップ方法を紹介しました。ここで紹介したツールは全てGoで書かれています。シングルバイナリを吐き出してくれるというのと、Goで書かれているので、いざなにか問題があったときに自分で修正できるというのが理由です。
 
 [^1]: https://arc.net/l/quote/ukodtyet
 [^2]: https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md#run
