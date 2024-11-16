@@ -14,6 +14,9 @@ export default jsxRenderer(({ children, Layout, frontmatter }) => {
       <div class={"mt-6 sm:px-6"}>
         <div class="bg-slate-50 shadow-sm px-8 py-4 mb-12">
           <div class={"mb-8"}>
+            <h1 class={"leading-tight text-2xl font-bold mb-4 mt-6 pb-2"}>
+              {frontmatter.title}
+            </h1>
             <article class={"markdown"}>{children}</article>
           </div>
           <a
