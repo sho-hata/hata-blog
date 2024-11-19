@@ -13,7 +13,7 @@ export const Article: FC<Props> = ({ date, title, entryName }) => {
       <time class={"text-sm max-md:text-xs"}>{formatDate(date)}</time>
       <a
         class={"text-lg max-md:text-base underline"}
-        href={`${entryName.replace(/\.mdx$/, "")}`}
+        href={`/${entryName.replace(/\.mdx$/, "")}`}
       >
         {title}
       </a>
