@@ -30,6 +30,9 @@ export default function Top() {
                 GoやTypeScriptでソフトウェアを書いているHataです。
                 このブログでは、雑多な技術ネタや、とりとめもないことを記録します。
               </p>
+              <a href="/about" class={"text-sm underline text-slate-500"}>
+                私について
+              </a>
             </div>
           </div>
           <div class={"flex gap-2 items-center pb-8 border-b"}>
