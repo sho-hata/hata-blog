@@ -1,0 +1,45 @@
+---
+title: "Mac MチップでhomebrewのパスがIntel Mac用のパスになっていた"
+date: 2024-11-23
+description: VMを立ち上げる機会さえなければ、homebrewのパスをIntel Macと同じ/usr/local/binにしていても不都合はないのかもしれない
+---
+
+## Mac Mチップでhomebrewのパスがusr/local/binになっていたことに気づかないまま使っていた
+Mac Mチップ搭載のマシンで homebrew を使用している場合、そのインストーラパス及びパッケージのインストール先は`/opt/homebrew/bin/`が正しいのですが、先日自分が持つ M1 Macのマシンの一つのhomebrew のパスが`/usr/local/bin/`になっていることに気づきました。
+```bash
+
+$ which brew
+/usr/local/bin/brew
+
+```
+
+`usr/local/bin`はIntel Macのhomebrewのパスです。
+
+## どうして気づいたのか
+仮想環境を立ち上げる際に、rosetta関連のエラーが発生したためです。
+
+x86アーキテクチャのVMを立ち上げようとして、[Lima](https://lima-vm.io/ )をbrewでインストールしたのですが、VMを立ち上げるときに`limactl is running under rosetta, please reinstall lima with native arch`と怒られました。どうして今更rosetta関係の問題が発生するんだ？と思い、ざっと調べていると、homebrew のパスが間違っていることが原因だということが判明。
+<ExternalOgp url="https://github.com/abiosoft/colima/issues/702#issuecomment-1545505316" />
+
+```bash
+
+$ which lima
+/usr/local/bin/lima // これが間違い
+/opt/homebrew/bin/lima // これが正しい
+
+```
+
+なぜパスが間違っていたのか...。おそらく、Homebrewのインストール時に、Intel Mac用のパスを指定してしまったのだと思います。初歩的なミス。
+
+## 解決策
+homebrewのアンインストール&再度インストールすることで解決。
+
+```bash
+brew cleanup
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+```
+
+参考：https://github.com/homebrew/install#uninstall-homebrew
+
+---
+
