@@ -17,7 +17,7 @@ const sortPostsByDate = (
   );
 };
 
-export const pathToEntryName = (path: string): string | undefined => {
+const pathToEntryName = (path: string): string | undefined => {
   const match = path.match(
     /(?<=\/routes\/)(articles\/\d+\/[a-z0-9]+)(?=\.mdx)/,
   );
