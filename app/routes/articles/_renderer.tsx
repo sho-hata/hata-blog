@@ -1,5 +1,6 @@
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { GithubIcon, XIcon } from "../../components/icons";
+import { blogName } from "../../constraints";
 
 export default jsxRenderer(({ children, Layout, frontmatter }) => {
   const imageUrl = import.meta.env.PROD
@@ -17,7 +18,7 @@ export default jsxRenderer(({ children, Layout, frontmatter }) => {
             <article class={"markdown"}>{children}</article>
           </div>
           <a
-            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://sho-hata.com${currentPath}`)}&text=${encodeURIComponent(`${frontmatter.title} | hata's blog`)}`}
+            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://sho-hata.com${currentPath}`)}&text=${encodeURIComponent(`${frontmatter.title} | ${blogName}`)}`}
             referrerpolicy="no-referrer"
             class={"flex hover:opacity-70 transition-opacity"}
           >
