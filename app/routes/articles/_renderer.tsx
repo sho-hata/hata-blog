@@ -1,6 +1,7 @@
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { GithubIcon, XIcon } from "../../components/icons";
 import { blogName } from "../../constraints";
+import { formatDate } from "../../lib/format/date";
 
 export default jsxRenderer(({ children, Layout, frontmatter }) => {
   const imageUrl = import.meta.env.PROD
@@ -15,6 +16,14 @@ export default jsxRenderer(({ children, Layout, frontmatter }) => {
       <div class={"mt-6 sm:px-6"}>
         <div class="bg-slate-50 shadow-sm px-8 py-4 mb-12">
           <div class={"mb-8"}>
+            <div class={"mb-4"}>
+              <h1 class={"leading-tight text-3xl font-bold mt-6 pb-2"}>
+                {frontmatter.title}
+              </h1>
+              <time class={"text-sm max-md:text-xs text-slate-500"}>
+                {formatDate(frontmatter.date)}
+              </time>
+            </div>
             <article class={"markdown"}>{children}</article>
           </div>
           <a
