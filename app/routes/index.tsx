@@ -1,11 +1,5 @@
 import { Article } from "../components/article";
-import {
-  GithubIcon,
-  HomeIcon,
-  NoteIcon,
-  SizuMeIcon,
-  XIcon,
-} from "../components/icons";
+import { GithubIcon, NoteIcon, XIcon } from "../components/icons";
 import { getAllArticles } from "../lib/article";
 
 export default function Top() {
@@ -27,7 +21,7 @@ export default function Top() {
             <div class={"flex flex-col gap-2"}>
               <span class={"font-semibold"}>Shoki Hata</span>
               <p class={"text-sm"}>
-                GoやTypeScriptでソフトウェアを書いているHataです。
+                GoやTypeScriptでソフトウェアを書いているHataです。金融領域にいます。
                 このブログでは、雑多な技術ネタや、とりとめもないことを記録します。
               </p>
               <a href="/about" class={"text-sm underline text-slate-500"}>
@@ -36,13 +30,6 @@ export default function Top() {
             </div>
           </div>
           <div class={"flex gap-2 items-center pb-8 border-b"}>
-            <a
-              href="https://gist.github.com/sho-hata/94c4a5066b101d98080abd6ef45a44b0"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <HomeIcon size={22} title="@sho-hata" />
-            </a>
             <a
               href="https://x.com/sho_hata_"
               target="_blank"
@@ -56,13 +43,6 @@ export default function Top() {
               rel="noreferrer noopener"
             >
               <GithubIcon size={22} title="@sho-hata" />
-            </a>
-            <a
-              href="https://sizu.me/sho_hata"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <SizuMeIcon size={20} title="@sho_hata" />
             </a>
             <a
               href="https://note.com/sho_hata/"
