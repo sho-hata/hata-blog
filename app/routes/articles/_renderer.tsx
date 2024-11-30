@@ -14,13 +14,13 @@ export default jsxRenderer(({ children, Layout, frontmatter }) => {
   return (
     <Layout>
       <div class={"mt-6 sm:px-6"}>
-        <div class="bg-slate-50 shadow-sm px-8 py-4 mb-12">
+        <div class="bg-white shadow-sm px-8 py-4 mb-12">
           <div class={"mb-8"}>
             <div class={"mb-4"}>
-              <h1 class={"leading-tight text-3xl font-bold mt-6 pb-2"}>
+              <h1 class={"leading-tight text-3xl font-semibold mt-6 pb-2"}>
                 {frontmatter.title}
               </h1>
-              <time class={"text-sm max-md:text-xs text-slate-500"}>
+              <time class={"text-sm max-md:text-xs text-slate-400"}>
                 {formatDate(frontmatter.date)}
               </time>
             </div>

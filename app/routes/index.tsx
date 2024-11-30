@@ -10,7 +10,7 @@ export default function Top() {
   const articles = getAllArticles();
   return (
     <div class={"px-6 mt-6"}>
-      <section class="py-12 bg-slate-50 rounded-lg shadow-md">
+      <section class="py-12 bg-white rounded-lg shadow-md">
         <div class={"mx-8"}>
           <div class={"flex items-center space-x-4 mb-8"}>
             <img
@@ -19,12 +19,12 @@ export default function Top() {
               class={"w-20 h-20 rounded-full"}
             />
             <div class={"flex flex-col gap-2"}>
-              <span class={"font-semibold"}>Shoki Hata</span>
-              <p class={"text-sm"}>
+              <span class={"text-sm md:text-lg font-semibold"}>Shoki Hata</span>
+              <p class={"text-sm md:text-base"}>
                 GoやTypeScriptでソフトウェアを書いているHataです。金融領域にいます。
                 このブログでは、雑多な技術ネタや、とりとめもないことを記録します。
               </p>
-              <a href="/about" class={"text-sm underline text-slate-500"}>
+              <a href="/about" class={"text-sm md:text-base underline"}>
                 私について
               </a>
             </div>

@@ -53,7 +53,7 @@ export default jsxRenderer(({ children }) => {
       >
         <Header blogName={blogName} />
         <main class={"flex-grow max-w-[780px] w-screen"}>{children}</main>
-        <footer class={"py-8 max-w-[780px] w-screen px-6"}>
+        <footer class={"py-8 max-w-[780px] w-screen px-4"}>
           <div class={"mt-8 text-gray-500 text-sm text-center"}>
             {`© 2024 ${blogName}`}
           </div>
