@@ -1,5 +1,5 @@
 import { Article } from "../components/article";
-import { GithubIcon, NoteIcon, XIcon } from "../components/icons";
+import { GithubIcon, NoteIcon, SizuMeIcon, XIcon } from "../components/icons";
 import { getAllArticles } from "../lib/article";
 
 export default function Top() {
@@ -50,6 +50,13 @@ export default function Top() {
               rel="noreferrer noopener"
             >
               <NoteIcon size={10} title="@sho_hata" />
+            </a>
+            <a
+              href="https://sizu.me/sho_hata"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <SizuMeIcon size={20} title="@sho_hata" />
             </a>
           </div>
           <div class={"mt-6 flex flex-col gap-8"}>

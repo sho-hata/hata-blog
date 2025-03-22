@@ -17,7 +17,7 @@ export default function About(c: Context) {
           />
           <div class={"flex flex-col gap-2"}>
             <p>主にGo、TypeScriptでソフトウェアを書くエンジニアです。</p>
-            <p>決済システムに関心があります。</p>
+            <p>金融領域にいます。</p>
           </div>
         </div>
         <h2>経歴</h2>
