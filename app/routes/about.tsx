@@ -22,7 +22,7 @@ export default function About(c: Context) {
         </div>
         <h2>経歴</h2>
         <p>
-          2020年に株式会社エイチームに新卒入社し、バックエンド・WebフロントエンドでのWebメディアサービスの開発を担当。2022年より、株式会社カンムでAndroid/iOS・バックエンドでのクレジットカードサービスの開発にたずさわっています。
+          2020年に株式会社エイチームに新卒入社し、バックエンド・WebフロントエンドでのWebメディアサービスの開発を担当。2022年より、株式会社カンムでAndroid/iOS・バックエンドでのToC向け投資・クレジットカードサービスの開発を担当。2025年より、同社でToB向け資金調達サービスの新規事業のエンジニアとして開発に従事。
         </p>
         <a href="https://gist.github.com/sho-hata/366a404f31ed8b7b9e1ee38da16c7401">
           詳細な経歴
@@ -47,6 +47,9 @@ export default function About(c: Context) {
         </p>
         <h3>国内</h3>
         <ul>
+          <li>
+            <a href="https://gocon.jp/2025/talks/959021/">Go Conference 2025</a>
+          </li>
           <li>
             <a href="https://gocon.jp/2024/sessions/8/">Go Conference 2024</a>
           </li>
