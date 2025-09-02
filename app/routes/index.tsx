@@ -36,7 +36,13 @@ export default function Top() {
             </div>
           </div>
           <div class={'flex gap-2 items-center pb-8 border-b'}>
-            <BlueSkyIcon size={20} title="@sho_hata" />
+          <a
+              href="https://bsky.app/profile/sho-hata.bsky.social"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <BlueSkyIcon size={20} title="@sho_hata" />
+            </a>
             <a
               href="https://x.com/sho_hata_"
               target="_blank"
